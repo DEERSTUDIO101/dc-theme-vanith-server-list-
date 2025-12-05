@@ -1,168 +1,231 @@
-/**
- * WizardUI Custom Modifications
- * - Serverliste nach unten verschoben
- * - Serverliste leicht transparent
- * - "Sprachchat verbunden" Text besser sichtbar
- * - Home Icon verkleinert
- * - Vencord "Read All" Button wieder darunter positioniert
- */
+/* 
+  WizardUI - Custom Modifications
+  
+  Änderungen:
+  1. Serverliste nach unten verschoben (von oben nach unten aufgehend)
+  2. Serverliste transparent gemacht
+  3. "Sprachchat verbunden" Text besser sichtbar
+  4. Home-Icon kleiner gemacht
+  5. Vencord "Read All" Button wieder unter Home positioniert
+*/
 
-/* ============================================
+/* ==========================================
    SERVERLISTE NACH UNTEN VERSCHIEBEN
-   ============================================ */
+   ========================================== */
 
-/* Serverliste nach unten positionieren */
+/* Serverliste Position ändern - von oben nach unten */
 #app-mount .guilds__5e434 {
-    top: unset !important;
-    bottom: 0 !important;
     transform-origin: bottom left !important;
-}
-
-/* Content-Bereich anpassen */
-#app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-top: 0px !important;
-    padding-bottom: calc(var(--ServerSize) + 20px) !important;
-}
-
-/* ============================================
-   SERVERLISTE TRANSPARENZ
-   ============================================ */
-
-/* Serverliste leicht transparent machen */
-.guilds__5e434:before {
-    background: var(--bg-servers) !important;
-    opacity: 0.7 !important;
-    backdrop-filter: blur(10px) !important;
-}
-
-/* Alternative: Direkte Transparenz auf die gesamte Serverliste */
-.guilds__5e434 {
-    background: rgba(0, 0, 0, 0.45) !important;
-    backdrop-filter: blur(8px) !important;
-}
-
-/* ============================================
-   SPRACHCHAT VERBUNDEN TEXT VERBESSERN
-   ============================================ */
-
-/* Voice Connected Container besser sichtbar machen */
-.container__37e49 {
-    background: rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid var(--Primary) !important;
-    box-shadow: 0 0 10px rgba(117, 76, 205, 0.3) !important;
-    border-radius: var(--Rounding) !important;
-    padding: 8px !important;
-}
-
-/* Username im Voice Chat besser lesbar */
-.container__37e49 .usernameContainer__22048 {
-    font-weight: 600 !important;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
-    font-size: 15px !important;
-}
-
-/* Subtext (z.B. Voice Channel Name) besser sichtbar */
-.container__37e49 .subtext__339d0 {
-    opacity: 1 !important;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8) !important;
-    font-weight: 500 !important;
-}
-
-/* ============================================
-   HOME ICON VERKLEINERN
-   ============================================ */
-
-/* Home Button Container verkleinern */
-.guilds__5e434 div[class^=tutorialContainer]>.listItem__650eb>div[class^=listItemWrapper]>div {
-    width: calc(var(--ServerSize) * 0.8) !important;
-    height: calc(var(--ServerSize) * 0.8) !important;
-    max-width: calc(var(--ServerSize) * 0.8) !important;
-    max-height: calc(var(--ServerSize) * 0.8) !important;
-}
-
-/* Home Icon selbst auch verkleinern */
-.guilds__5e434 div[class^=tutorialContainer]>.listItem__650eb>div[class^=listItemWrapper]>div svg {
-    transform: scale(0.8) !important;
-}
-
-/* Tutorial Container Margins anpassen */
-.tutorialContainer__1f388 {
-    margin: 4px 0 4px 0 !important;
-}
-
-/* ============================================
-   VENCORD "READ ALL" BUTTON POSITIONIERUNG
-   ============================================ */
-
-/* Vencord Read All Button wieder nach unten unter den Home Button */
-.guilds__5e434 [id*="read-all"] {
-    order: 3 !important;
-    margin-top: 5px !important;
-}
-
-/* Alternativ für andere Vencord Plugins */
-.guilds__5e434 .scroller_ef3116 > [class*="vc-"] {
-    order: 3 !important;
-}
-
-/* Tutorial Container (Home) auf Order 1 setzen */
-.guilds__5e434 .tutorialContainer__1f388,
-.guilds__5e434 .tutorialContainer__650eb {
-    order: 1 !important;
-}
-
-/* ============================================
-   ZUSÄTZLICHE VERBESSERUNGEN
-   ============================================ */
-
-/* Server Icons mit leichtem Glow Effekt bei Hover */
-.guilds__5e434 .wrapper__6e9f8:hover {
-    filter: drop-shadow(0 0 8px var(--Primary)) !important;
-    transition: all 0.2s ease !important;
-}
-
-/* Unread Pills besser sichtbar machen */
-.guilds__5e434 .pill__5bc7e>span {
-    box-shadow: 0 0 8px currentColor !important;
-}
-
-/* Panels (User Area) auch leicht transparent */
-.panels__5e434 {
-    background: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(8px) !important;
-}
-
-/* ============================================
-   OPTIONALE ANPASSUNGEN (auskommentiert)
-   ============================================ */
-
-/*
-   Falls du die Serverliste komplett am unteren Rand haben willst
-   ohne Abstand zum Fensterrand:
-*/
-/*
-#app-mount .guilds__5e434 {
+    transform: rotate(-90deg) !important;
+    height: 100vw !important;
+    width: calc(var(--ServerSize) + 20px);
+    top: auto !important;
     bottom: 0 !important;
-    left: 0 !important;
+    position: fixed !important;
+    left: 0;
+    flex-wrap: wrap;
+    place-content: center;
 }
-*/
 
-/*
-   Falls der "Sprachchat verbunden" Text zu groß sein sollte:
-*/
-/*
-.container__37e49 {
-    max-height: 80px !important;
-    overflow: hidden !important;
+/* Content Bereich Padding anpassen */
+#app-mount .app_a3002d .base__5e434 .content__5e434 {
+    padding-top: 0 !important;
+    padding-bottom: calc(var(--ServerSize) + 20px) !important;
+    position: relative;
 }
-*/
 
-/*
-   Falls du noch mehr Transparenz bei der Serverliste möchtest:
-*/
-/*
+/* Wrapper Position anpassen */
+#app-mount .wrapper_d144f8 {
+    transform: rotate(-90deg) translateY(0%) !important;
+    top: auto !important;
+    bottom: -10px !important;
+    left: 0px !important;
+    right: 0px !important;
+}
+
+/* Unread Indicators Position anpassen */
+.unreadMentionsIndicatorTop_ef3116 {
+    top: auto !important;
+    bottom: 0px !important;
+    left: 4px;
+    padding: 0;
+    height: var(--ServerSize);
+    width: var(--ServerSize);
+    overflow: visible;
+    margin: 6px 4px 6px 4px;
+}
+
+.unreadMentionsIndicatorBottom_ef3116 {
+    top: 0px !important;
+    bottom: auto !important;
+}
+
+.unreadMentionsIndicatorTop_ef3116 .unreadMentionsBar_ef3116 {
+    top: auto !important;
+    bottom: -6px !important;
+}
+
+.unreadMentionsIndicatorBottom_ef3116 .unreadMentionsBar_ef3116 {
+    top: 16px !important;
+    bottom: auto !important;
+}
+
+.unreadMentionsIndicatorTop_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: auto;
+    right: -4px;
+    width: 8px;
+    height: 16px;
+    background-color: var(--Unread);
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.unreadMentionsIndicatorBottom_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
+    content: "";
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    left: -6px;
+    width: 8px;
+    height: 16px;
+    background-color: var(--Unread);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+}
+
+/* ==========================================
+   SERVERLISTE TRANSPARENT MACHEN
+   ========================================== */
+
+/* Haupthintergrund transparent */
 .guilds__5e434:before {
-    opacity: 0.5 !important;
+    background: rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(5px);
 }
-*/
+
+/* Server Icons leicht transparent wenn nicht hover */
+#app-mount .guilds__5e434 .wrapper__6e9f8:not(:hover) {
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+#app-mount .guilds__5e434 .wrapper__6e9f8:hover {
+    opacity: 1;
+}
+
+/* Folder Background transparent */
+#app-mount .isExpanded__48112 .folderGroupBackground__48112 {
+    background-color: var(--custom-folder-color) !important;
+    opacity: 0.4 !important;
+}
+
+/* ==========================================
+   HOME ICON KLEINER MACHEN
+   ========================================== */
+
+/* Home Icon auf 70% verkleinern */
+.guilds__5e434 .tutorialContainer__1f388>div[class^=listItem_]>div[class^=listItemWrapper_]>div {
+    background-size: 70% !important;
+    background-position: center !important;
+}
+
+/* Alternative: Home Icon Container auch kleiner */
+#app-mount .guilds__5e434 .tutorialContainer__1f388 {
+    margin: 3px 0 3px 0;
+}
+
+/* ==========================================
+   VENCORD "READ ALL" BUTTON REPOSITIONIEREN
+   ========================================== */
+
+/* Read All Button unter Home platzieren */
+#app-mount .guilds__5e434 .scroller_ef3116>div:not([class]):not([style]):first-child {
+    order: 1 !important;
+    margin: 3px 0 3px 0 !important;
+}
+
+/* Tutorial Container (Home) Order */
+.tutorialContainer__1f388 {
+    order: 0 !important;
+}
+
+/* ==========================================
+   SPRACHCHAT VERBUNDEN TEXT VERBESSERN
+   ========================================== */
+
+/* Voice Connected Container Styling */
+.panels__5e434 .container__37e49 {
+    background: rgba(117, 76, 205, 0.25) !important;
+    padding: 8px !important;
+    border-radius: 5px;
+    border: 1px solid rgba(117, 76, 205, 0.5);
+    margin-bottom: 5px;
+}
+
+/* Voice Channel Name besser sichtbar */
+.panels__5e434 .container__37e49 .usernameContainer__22048 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Voice Connected Subtext */
+.panels__5e434 .container__37e49 .subtext__339d0 {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Voice Icon Hervorhebung */
+.panels__5e434 .container__37e49 .button__201d5 {
+    background: rgba(117, 76, 205, 0.3) !important;
+}
+
+.panels__5e434 .container__37e49 .button__201d5:hover {
+    background: rgba(117, 76, 205, 0.5) !important;
+}
+
+/* Call Connection Quality Indicator */
+.rtcConnectionQualityFine_d9d96b,
+.rtcConnectionQualityAverage_d9d96b,
+.rtcConnectionQualityBad_d9d96b {
+    filter: drop-shadow(0 0 3px rgba(117, 76, 205, 0.8));
+}
+
+/* Voice Connection Status Animation */
+@keyframes pulseVoice {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(117, 76, 205, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(117, 76, 205, 0.8);
+    }
+}
+
+.panels__5e434 .container__37e49 {
+    animation: pulseVoice 2s ease-in-out infinite;
+}
+
+/* ==========================================
+   ZUSÄTZLICHE VERBESSERUNGEN
+   ========================================== */
+
+/* Scrollbar für Serverliste wenn nötig */
+#app-mount .guilds__5e434 .scroller_ef3116 {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(117, 76, 205, 0.6) transparent;
+}
+
+/* Server Pills Farbe anpassen für bessere Sichtbarkeit */
+#app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ed9a5f>span,
+#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span,
+#app-mount .pill__1f388>span {
+    box-shadow: 0px 0px 8px 2px currentColor !important;
+}
+
+/* Smooth Transitions */
+#app-mount .guilds__5e434 .wrapper__6e9f8,
+#app-mount .guilds__5e434 .wrapper__6e9f8 .icon__6e9f8 {
+    transition: all 0.15s ease-in-out;
+}
