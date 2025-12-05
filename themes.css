@@ -1,0 +1,168 @@
+/**
+ * WizardUI Custom Modifications
+ * - Serverliste nach unten verschoben
+ * - Serverliste leicht transparent
+ * - "Sprachchat verbunden" Text besser sichtbar
+ * - Home Icon verkleinert
+ * - Vencord "Read All" Button wieder darunter positioniert
+ */
+
+/* ============================================
+   SERVERLISTE NACH UNTEN VERSCHIEBEN
+   ============================================ */
+
+/* Serverliste nach unten positionieren */
+#app-mount .guilds__5e434 {
+    top: unset !important;
+    bottom: 0 !important;
+    transform-origin: bottom left !important;
+}
+
+/* Content-Bereich anpassen */
+#app-mount .app_a3002d .base__5e434 .content__5e434 {
+    padding-top: 0px !important;
+    padding-bottom: calc(var(--ServerSize) + 20px) !important;
+}
+
+/* ============================================
+   SERVERLISTE TRANSPARENZ
+   ============================================ */
+
+/* Serverliste leicht transparent machen */
+.guilds__5e434:before {
+    background: var(--bg-servers) !important;
+    opacity: 0.7 !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Alternative: Direkte Transparenz auf die gesamte Serverliste */
+.guilds__5e434 {
+    background: rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+/* ============================================
+   SPRACHCHAT VERBUNDEN TEXT VERBESSERN
+   ============================================ */
+
+/* Voice Connected Container besser sichtbar machen */
+.container__37e49 {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid var(--Primary) !important;
+    box-shadow: 0 0 10px rgba(117, 76, 205, 0.3) !important;
+    border-radius: var(--Rounding) !important;
+    padding: 8px !important;
+}
+
+/* Username im Voice Chat besser lesbar */
+.container__37e49 .usernameContainer__22048 {
+    font-weight: 600 !important;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
+    font-size: 15px !important;
+}
+
+/* Subtext (z.B. Voice Channel Name) besser sichtbar */
+.container__37e49 .subtext__339d0 {
+    opacity: 1 !important;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 500 !important;
+}
+
+/* ============================================
+   HOME ICON VERKLEINERN
+   ============================================ */
+
+/* Home Button Container verkleinern */
+.guilds__5e434 div[class^=tutorialContainer]>.listItem__650eb>div[class^=listItemWrapper]>div {
+    width: calc(var(--ServerSize) * 0.8) !important;
+    height: calc(var(--ServerSize) * 0.8) !important;
+    max-width: calc(var(--ServerSize) * 0.8) !important;
+    max-height: calc(var(--ServerSize) * 0.8) !important;
+}
+
+/* Home Icon selbst auch verkleinern */
+.guilds__5e434 div[class^=tutorialContainer]>.listItem__650eb>div[class^=listItemWrapper]>div svg {
+    transform: scale(0.8) !important;
+}
+
+/* Tutorial Container Margins anpassen */
+.tutorialContainer__1f388 {
+    margin: 4px 0 4px 0 !important;
+}
+
+/* ============================================
+   VENCORD "READ ALL" BUTTON POSITIONIERUNG
+   ============================================ */
+
+/* Vencord Read All Button wieder nach unten unter den Home Button */
+.guilds__5e434 [id*="read-all"] {
+    order: 3 !important;
+    margin-top: 5px !important;
+}
+
+/* Alternativ für andere Vencord Plugins */
+.guilds__5e434 .scroller_ef3116 > [class*="vc-"] {
+    order: 3 !important;
+}
+
+/* Tutorial Container (Home) auf Order 1 setzen */
+.guilds__5e434 .tutorialContainer__1f388,
+.guilds__5e434 .tutorialContainer__650eb {
+    order: 1 !important;
+}
+
+/* ============================================
+   ZUSÄTZLICHE VERBESSERUNGEN
+   ============================================ */
+
+/* Server Icons mit leichtem Glow Effekt bei Hover */
+.guilds__5e434 .wrapper__6e9f8:hover {
+    filter: drop-shadow(0 0 8px var(--Primary)) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Unread Pills besser sichtbar machen */
+.guilds__5e434 .pill__5bc7e>span {
+    box-shadow: 0 0 8px currentColor !important;
+}
+
+/* Panels (User Area) auch leicht transparent */
+.panels__5e434 {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+/* ============================================
+   OPTIONALE ANPASSUNGEN (auskommentiert)
+   ============================================ */
+
+/*
+   Falls du die Serverliste komplett am unteren Rand haben willst
+   ohne Abstand zum Fensterrand:
+*/
+/*
+#app-mount .guilds__5e434 {
+    bottom: 0 !important;
+    left: 0 !important;
+}
+*/
+
+/*
+   Falls der "Sprachchat verbunden" Text zu groß sein sollte:
+*/
+/*
+.container__37e49 {
+    max-height: 80px !important;
+    overflow: hidden !important;
+}
+*/
+
+/*
+   Falls du noch mehr Transparenz bei der Serverliste möchtest:
+*/
+/*
+.guilds__5e434:before {
+    opacity: 0.5 !important;
+}
+*/
