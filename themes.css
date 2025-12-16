@@ -1,231 +1,331 @@
-/* 
-  WizardUI - Custom Modifications
-  
-  Änderungen:
-  1. Serverliste nach unten verschoben (von oben nach unten aufgehend)
-  2. Serverliste transparent gemacht
-  3. "Sprachchat verbunden" Text besser sichtbar
-  4. Home-Icon kleiner gemacht
-  5. Vencord "Read All" Button wieder unter Home positioniert
-*/
-
-/* ==========================================
-   SERVERLISTE NACH UNTEN VERSCHIEBEN
-   ========================================== */
-
-/* Serverliste Position ändern - von oben nach unten */
-#app-mount .guilds__5e434 {
-    transform-origin: bottom left !important;
-    transform: rotate(-90deg) !important;
-    height: 100vw !important;
-    width: calc(var(--ServerSize) + 20px);
-    top: auto !important;
-    bottom: 0 !important;
-    position: fixed !important;
-    left: 0;
-    flex-wrap: wrap;
-    place-content: center;
+.platform-osx .wrapper_ef3116 {
+    margin-top: 0px;
 }
 
-/* Content Bereich Padding anpassen */
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-top: 0 !important;
-    padding-bottom: calc(var(--ServerSize) + 20px) !important;
+    padding-top: calc(var(--ServerSize) + 20px) !important;
     position: relative;
 }
 
-/* Wrapper Position anpassen */
-#app-mount .wrapper_d144f8 {
-    transform: rotate(-90deg) translateY(0%) !important;
-    top: auto !important;
-    bottom: -10px !important;
-    left: 0px !important;
-    right: 0px !important;
+/* Serverliste oben horizontal positionieren */
+#app-mount .guilds__5e434 {
+    transform-origin: top left;
+    transform: none; /* Rotation entfernt */
+    height: calc(var(--ServerSize) + 20px) !important; /* Höhe statt 100vw */
+    width: 100vw !important; /* Breite auf volle Viewport-Breite */
+    top: 0; /* Oben positionieren */
+    bottom: unset;
+    position: fixed !important;
+    left: 0;
+    flex-wrap: nowrap; /* wrap entfernt */
+    place-content: flex-start;
+    overflow-x: auto; /* Horizontales Scrollen */
+    overflow-y: hidden;
 }
 
-/* Unread Indicators Position anpassen */
-.unreadMentionsIndicatorTop_ef3116 {
-    top: auto !important;
-    bottom: 0px !important;
-    left: 4px;
-    padding: 0;
+.scrollerWrap-1IAIlv {
+    width: calc(100% + 30px);
+}
+
+#app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
+    transform: none; /* Rotation entfernt */
+    position: unset;
+    width: var(--ServerSize);
+    height: var(--ServerSize);
+    overflow: visible;
+}
+
+#app-mount .guilds__5e434 .listItem__650eb {
+    width: unset;
+    margin: 0;
+}
+
+
+#app-mount .guilds__5e434 .tutorialContainer__650eb,
+#app-mount .guilds__5e434 .tutorialContainer__650eb+.listItem__650eb {
+    width: auto;
+    place-content: center;
+    flex-wrap: wrap;
+    margin: 0 3px 0 6px; /* Margin angepasst für horizontal */
+}
+
+#app-mount .guilds__5e434 .folderGroup__48112>.listItem__650eb {
+    margin: 0px !important;
+}
+
+#app-mount .guilds__5e434 .tutorialContainer__1f388+.listItem__650eb {
+    transform: initial;
+}
+
+#app-mount .folderGroup__48112 {
+    display: flex;
+    flex-wrap: nowrap; /* wrap entfernt für horizontal */
+    justify-content: center;
+    width: auto; /* width auf auto */
+    overflow: visible;
+}
+
+#app-mount .folderGroup__48112:not(.isExpanded__48112) {
     height: var(--ServerSize);
     width: var(--ServerSize);
-    overflow: visible;
-    margin: 6px 4px 6px 4px;
+}
+
+#app-mount  .folderHeader__48112 {
+    height: var(--ServerSize);
+    width: var(--ServerSize);
+}
+
+#app-mount .guilds__5e434 .scroller_ef3116 .stack_dbd263:not([id]) {
+    width: auto; /* Breite auf auto */
+    flex: 1 1 auto;
+    justify-content: center;
+}
+
+#app-mount [class*="guildSeparator"] {
+    transform: none; /* Rotation entfernt */
+    width: 2px; /* Breite für vertikalen Separator */
+    height: var(--ServerSize);
+}
+
+#app-mount .wrapper_d144f8 {
+    transform: none; /* Rotation entfernt */
+    top: -10px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.folderGroup__48112[data-drop-hovering=true]:not(.isExpanded__48112) .folderHeader__48112 {
+    border-radius: var(--Rounding);
+}
+
+#app-mount .guilds__5e434 .placeholderMask__87847,
+#app-mount .guilds__5e434 .placeholderMask__87847>foreignObject {
+    width: var(--ServerSize);
+    height: var(--ServerSize);
+}
+
+#app-mount .guilds__5e434 .target_d144f8::before {
+    position: absolute;
+    border-radius: var(--Rounding);
+    box-shadow: none;
+    width: 4px; /* Breite für vertikale Linie */
+    height: var(--ServerSize);
+    top: 0;
+    left: -2px;
+    right: auto;
+}
+
+#app-mount .guilds__5e434 .centerTarget_d144f8:before {
+    position: absolute;
+    border-radius: var(--Rounding);
+    box-shadow: none;
+    width: 4px;
+    height: var(--ServerSize);
+    top: 0;
+    left: initial;
+    right: 9px;
+}
+
+.dragInner__87847 {
+    border-radius: var(--Rounding);
+    background-color: var(--Primary);
+}
+
+#app-mount .guilds__5e434.hidden_ef3116+.base__5e434 {
+    top: 0 !important;
+}
+
+#app-mount .isExpanded__48112 .folderGroupBackground__48112 {
+    background-color: var(--custom-folder-color);
+    opacity: 0.6;
+    border-radius: var(--Rounding);
+    left: 0;
+    height: var(--ServerSize);
+    width: calc(100% - 0px);
+    top: 0px;
+    border: none;
+}
+
+/* Scroller horizontal ausrichten */
+#app-mount .guilds__5e434 .scroller_ef3116 {
+    width: 100% !important; /* Volle Breite */
+    height: calc(var(--ServerSize) + 20px) !important;
+    display: flex;
+    flex-direction: row !important; /* Horizontal */
+    padding: 0 10px !important;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Pills horizontal angepasst */
+#app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ed9a5f,
+#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c,
+#app-mount .pill__1f388 {
+    transform: none; /* Rotation entfernt */
+    height: var(--ServerSize);
+    width: 10px;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    left: -8px;
+    display: flex;
+    justify-content: center;
+}
+
+#app-mount .guilds__5e434 div.stack_dbd263>.folderGroup__48112 .listItem__650eb .pill_e5445c {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+#app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ed9a5f>span,
+#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span,
+#app-mount .pill__1f388>span {
+    margin-left: 0;
+    width: 5px;
+    border-radius: 50%;
+    height: 5px!important;
+    box-shadow: 0px 0px 5px 1px currentColor;  
+}
+
+#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span[style*="height: 8px;"] {
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 0px currentColor;  
+}
+
+#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span:not([style*="height: 40px;"]) {
+    height: calc(var(--ServerSize) * 0.5) !important;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 0px currentColor;  
+}
+
+#app-mount .pillMessage_dc6abe {
+    width: 100% !important;
+}
+
+#app-mount .guilds__5e434 .scroller_ef3116>div[style*="opacity: 1;"]:not(:first-child)>.listItem__650eb {
+    position: initial;
+    width: var(--ServerSize);
+    height: var(--ServerSize);
+}
+
+#app-mount .activityCount_fa285e>.pill_dc6abe.pillOnline_dc6abe+.pill_dc6abe {
+    transform: none;
+    width: auto;
+    height: auto;
+}
+
+#app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper])>.wrapper__6e9f8 {
+    width: var(--ServerSize);
+    height: var(--ServerSize);
+    top: 0px;
+    bottom: 0px;
+}
+
+#app-mount .guilds__5e434 .folderGroup__48112 ul>[class*=listItem]:not([class*=listItemWrapper]) {
+    margin: 0;
+}
+
+#app-mount .guilds__5e434 .scroller_ef3116>div[style*="opacity: 1;"]:not(:first-child) {
+    margin: 0 3px 0 3px; /* Horizontale Margins */
+}
+
+#app-mount .guilds__5e434 .scroller_ef3116>div:not([class]):not([style]) {
+    place-content: center;
+    flex: 1 1 auto;
+    margin: 0 6px;
+    border-radius: var(--Rounding);
+}
+
+.tree_ef3116 {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.footer__214dc {
+    margin: 0 6px 0 6px; /* Horizontale Margins */
+    width: auto;
+    padding: 0;
 }
 
 .unreadMentionsIndicatorBottom_ef3116 {
-    top: 0px !important;
-    bottom: auto !important;
+    overflow: visible;
+}
+
+/* Unread Mentions Bar für horizontale Anzeige angepasst */
+.unreadMentionsBar_ef3116 {
+    transform: none !important;
+    left: 0;
+    bottom: unset;
+    width: 50px;
+    height: calc(var(--ServerSize) + 20px);
+    padding: 0;
+    opacity: 1;
 }
 
 .unreadMentionsIndicatorTop_ef3116 .unreadMentionsBar_ef3116 {
-    top: auto !important;
-    bottom: -6px !important;
+    left: 0;
 }
 
 .unreadMentionsIndicatorBottom_ef3116 .unreadMentionsBar_ef3116 {
-    top: 16px !important;
-    bottom: auto !important;
+    right: 0;
+    left: auto;
 }
 
-.unreadMentionsIndicatorTop_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
-    content: "";
-    position: absolute;
+.unreadMentionsIndicatorTop_ef3116,
+.unreadMentionsIndicatorBottom_ef3116 {
     top: 0px;
-    bottom: auto;
-    right: -4px;
-    width: 8px;
-    height: 16px;
-    background-color: var(--Unread);
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    left: 0;
+    padding: 0;
+    height: calc(var(--ServerSize) + 20px);
+    width: 50px;
+    overflow: visible;
+    margin: 0;
+    position: fixed;
+}
+
+.unreadMentionsIndicatorBottom_ef3116 {
+    top: 0;
+    bottom: unset;
+    left: auto;
+    right: 0;
 }
 
 .unreadMentionsIndicatorBottom_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
     content: "";
     position: absolute;
-    top: auto;
-    bottom: 0px;
-    left: -6px;
-    width: 8px;
-    height: 16px;
+    bottom: 50%;
+    right: 0;
+    width: 16px;
+    height: 8px;
+    background-color: var(--Unread);
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    transform: translateY(50%) rotate(90deg);
+}
+
+.unreadMentionsIndicatorTop_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
+    content: "";
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    width: 16px;
+    height: 8px;
     background-color: var(--Unread);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    transform: translateY(50%) rotate(-90deg);
 }
 
-/* ==========================================
-   SERVERLISTE TRANSPARENT MACHEN
-   ========================================== */
-
-/* Haupthintergrund transparent */
-.guilds__5e434:before {
-    background: rgba(0, 0, 0, 0.35) !important;
-    backdrop-filter: blur(5px);
+.visual-refresh .folderPreviewWrapper__48112 {
+    width: 100%;
+    height: 100%;
 }
 
-/* Server Icons leicht transparent wenn nicht hover */
-#app-mount .guilds__5e434 .wrapper__6e9f8:not(:hover) {
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
+.visual-refresh .wrapper_cc5dd2[style="width: 48px; height: 48px;"] {
+    width: var(--ServerSize) !important;
+    height: var(--ServerSize) !important;
 }
 
-#app-mount .guilds__5e434 .wrapper__6e9f8:hover {
-    opacity: 1;
-}
-
-/* Folder Background transparent */
-#app-mount .isExpanded__48112 .folderGroupBackground__48112 {
-    background-color: var(--custom-folder-color) !important;
-    opacity: 0.4 !important;
-}
-
-/* ==========================================
-   HOME ICON KLEINER MACHEN
-   ========================================== */
-
-/* Home Icon auf 70% verkleinern */
-.guilds__5e434 .tutorialContainer__1f388>div[class^=listItem_]>div[class^=listItemWrapper_]>div {
-    background-size: 70% !important;
-    background-position: center !important;
-}
-
-/* Alternative: Home Icon Container auch kleiner */
-#app-mount .guilds__5e434 .tutorialContainer__1f388 {
-    margin: 3px 0 3px 0;
-}
-
-/* ==========================================
-   VENCORD "READ ALL" BUTTON REPOSITIONIEREN
-   ========================================== */
-
-/* Read All Button unter Home platzieren */
-#app-mount .guilds__5e434 .scroller_ef3116>div:not([class]):not([style]):first-child {
-    order: 1 !important;
-    margin: 3px 0 3px 0 !important;
-}
-
-/* Tutorial Container (Home) Order */
-.tutorialContainer__1f388 {
-    order: 0 !important;
-}
-
-/* ==========================================
-   SPRACHCHAT VERBUNDEN TEXT VERBESSERN
-   ========================================== */
-
-/* Voice Connected Container Styling */
-.panels__5e434 .container__37e49 {
-    background: rgba(117, 76, 205, 0.25) !important;
-    padding: 8px !important;
-    border-radius: 5px;
-    border: 1px solid rgba(117, 76, 205, 0.5);
-    margin-bottom: 5px;
-}
-
-/* Voice Channel Name besser sichtbar */
-.panels__5e434 .container__37e49 .usernameContainer__22048 {
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Voice Connected Subtext */
-.panels__5e434 .container__37e49 .subtext__339d0 {
-    color: rgba(255, 255, 255, 0.95) !important;
-    font-weight: 500 !important;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Voice Icon Hervorhebung */
-.panels__5e434 .container__37e49 .button__201d5 {
-    background: rgba(117, 76, 205, 0.3) !important;
-}
-
-.panels__5e434 .container__37e49 .button__201d5:hover {
-    background: rgba(117, 76, 205, 0.5) !important;
-}
-
-/* Call Connection Quality Indicator */
-.rtcConnectionQualityFine_d9d96b,
-.rtcConnectionQualityAverage_d9d96b,
-.rtcConnectionQualityBad_d9d96b {
-    filter: drop-shadow(0 0 3px rgba(117, 76, 205, 0.8));
-}
-
-/* Voice Connection Status Animation */
-@keyframes pulseVoice {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(117, 76, 205, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 15px rgba(117, 76, 205, 0.8);
-    }
-}
-
-.panels__5e434 .container__37e49 {
-    animation: pulseVoice 2s ease-in-out infinite;
-}
-
-/* ==========================================
-   ZUSÄTZLICHE VERBESSERUNGEN
-   ========================================== */
-
-/* Scrollbar für Serverliste wenn nötig */
-#app-mount .guilds__5e434 .scroller_ef3116 {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(117, 76, 205, 0.6) transparent;
-}
-
-/* Server Pills Farbe anpassen für bessere Sichtbarkeit */
-#app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ed9a5f>span,
-#app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span,
-#app-mount .pill__1f388>span {
-    box-shadow: 0px 0px 8px 2px currentColor !important;
-}
-
-/* Smooth Transitions */
-#app-mount .guilds__5e434 .wrapper__6e9f8,
-#app-mount .guilds__5e434 .wrapper__6e9f8 .icon__6e9f8 {
-    transition: all 0.15s ease-in-out;
+.folderGroup__48112.isExpanded__48112 .folderPreviewWrapper__48112 {
+    margin-left: 6px; /* margin-top zu margin-left für horizontal */
 }
