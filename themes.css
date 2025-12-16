@@ -2,25 +2,30 @@
     margin-top: 0px;
 }
 
+/* Hauptinhalt ohne extra Padding oben */
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-top: calc(var(--ServerSize) + 20px) !important;
+    padding-top: 0 !important;
     position: relative;
 }
 
-/* Serverliste oben horizontal positionieren */
+/* Serverliste ganz oben in der Titelleiste */
 #app-mount .guilds__5e434 {
     transform-origin: top left;
-    transform: none; /* Rotation entfernt */
-    height: calc(var(--ServerSize) + 20px) !important; /* Höhe statt 100vw */
-    width: 100vw !important; /* Breite auf volle Viewport-Breite */
-    top: 0; /* Oben positionieren */
+    transform: none;
+    height: 48px !important; /* Höhe der Titelleiste */
+    width: 100vw !important;
+    top: 0 !important; /* Ganz oben */
     bottom: unset;
     position: fixed !important;
-    left: 0;
-    flex-wrap: nowrap; /* wrap entfernt */
+    left: 72px; /* Platz für Home-Button lassen */
+    right: 0;
+    flex-wrap: nowrap;
     place-content: flex-start;
-    overflow-x: auto; /* Horizontales Scrollen */
+    overflow-x: auto;
     overflow-y: hidden;
+    z-index: 1000;
+    background: transparent; /* Durchsichtig, damit Titelleiste durchscheint */
+    padding-left: 10px;
 }
 
 .scrollerWrap-1IAIlv {
@@ -28,7 +33,7 @@
 }
 
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
-    transform: none; /* Rotation entfernt */
+    transform: none;
     position: unset;
     width: var(--ServerSize);
     height: var(--ServerSize);
@@ -40,13 +45,12 @@
     margin: 0;
 }
 
-
 #app-mount .guilds__5e434 .tutorialContainer__650eb,
 #app-mount .guilds__5e434 .tutorialContainer__650eb+.listItem__650eb {
     width: auto;
     place-content: center;
     flex-wrap: wrap;
-    margin: 0 3px 0 6px; /* Margin angepasst für horizontal */
+    margin: 0 3px 0 6px;
 }
 
 #app-mount .guilds__5e434 .folderGroup__48112>.listItem__650eb {
@@ -59,9 +63,9 @@
 
 #app-mount .folderGroup__48112 {
     display: flex;
-    flex-wrap: nowrap; /* wrap entfernt für horizontal */
+    flex-wrap: nowrap;
     justify-content: center;
-    width: auto; /* width auf auto */
+    width: auto;
     overflow: visible;
 }
 
@@ -76,19 +80,19 @@
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116 .stack_dbd263:not([id]) {
-    width: auto; /* Breite auf auto */
+    width: auto;
     flex: 1 1 auto;
     justify-content: center;
 }
 
 #app-mount [class*="guildSeparator"] {
-    transform: none; /* Rotation entfernt */
-    width: 2px; /* Breite für vertikalen Separator */
+    transform: none;
+    width: 2px;
     height: var(--ServerSize);
 }
 
 #app-mount .wrapper_d144f8 {
-    transform: none; /* Rotation entfernt */
+    transform: none;
     top: -10px;
     bottom: 0px;
     left: 0px;
@@ -109,7 +113,7 @@
     position: absolute;
     border-radius: var(--Rounding);
     box-shadow: none;
-    width: 4px; /* Breite für vertikale Linie */
+    width: 4px;
     height: var(--ServerSize);
     top: 0;
     left: -2px;
@@ -147,12 +151,12 @@
     border: none;
 }
 
-/* Scroller horizontal ausrichten */
+/* Scroller horizontal in der Titelleiste */
 #app-mount .guilds__5e434 .scroller_ef3116 {
-    width: 100% !important; /* Volle Breite */
-    height: calc(var(--ServerSize) + 20px) !important;
+    width: 100% !important;
+    height: 48px !important; /* Höhe der Titelleiste */
     display: flex;
-    flex-direction: row !important; /* Horizontal */
+    flex-direction: row !important;
     padding: 0 10px !important;
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -163,12 +167,12 @@
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ed9a5f,
 #app-mount .guilds__5e434 .listItem__650eb .pill_e5445c,
 #app-mount .pill__1f388 {
-    transform: none; /* Rotation entfernt */
+    transform: none;
     height: var(--ServerSize);
-    width: 10px;
+    width: 8px;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    left: -8px;
+    left: -6px;
     display: flex;
     justify-content: center;
 }
@@ -182,9 +186,9 @@
 #app-mount .guilds__5e434 .listItem__650eb .pill_e5445c>span,
 #app-mount .pill__1f388>span {
     margin-left: 0;
-    width: 5px;
+    width: 4px;
     border-radius: 50%;
-    height: 5px!important;
+    height: 4px!important;
     box-shadow: 0px 0px 5px 1px currentColor;  
 }
 
@@ -227,7 +231,7 @@
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div[style*="opacity: 1;"]:not(:first-child) {
-    margin: 0 3px 0 3px; /* Horizontale Margins */
+    margin: 0 4px 0 4px;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div:not([class]):not([style]) {
@@ -244,7 +248,7 @@
 }
 
 .footer__214dc {
-    margin: 0 6px 0 6px; /* Horizontale Margins */
+    margin: 0 6px 0 6px;
     width: auto;
     padding: 0;
 }
@@ -253,19 +257,19 @@
     overflow: visible;
 }
 
-/* Unread Mentions Bar für horizontale Anzeige angepasst */
+/* Unread Mentions Bar für Titelleiste */
 .unreadMentionsBar_ef3116 {
     transform: none !important;
     left: 0;
     bottom: unset;
     width: 50px;
-    height: calc(var(--ServerSize) + 20px);
+    height: 48px;
     padding: 0;
     opacity: 1;
 }
 
 .unreadMentionsIndicatorTop_ef3116 .unreadMentionsBar_ef3116 {
-    left: 0;
+    left: 72px; /* Nach Home-Button */
 }
 
 .unreadMentionsIndicatorBottom_ef3116 .unreadMentionsBar_ef3116 {
@@ -276,13 +280,14 @@
 .unreadMentionsIndicatorTop_ef3116,
 .unreadMentionsIndicatorBottom_ef3116 {
     top: 0px;
-    left: 0;
+    left: 72px;
     padding: 0;
-    height: calc(var(--ServerSize) + 20px);
+    height: 48px;
     width: 50px;
     overflow: visible;
     margin: 0;
     position: fixed;
+    z-index: 1001;
 }
 
 .unreadMentionsIndicatorBottom_ef3116 {
@@ -295,25 +300,25 @@
 .unreadMentionsIndicatorBottom_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
     content: "";
     position: absolute;
-    bottom: 50%;
+    top: 50%;
     right: 0;
     width: 16px;
     height: 8px;
     background-color: var(--Unread);
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    transform: translateY(50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
 
 .unreadMentionsIndicatorTop_ef3116>.unreadMentionsBar_ef3116:not(.hidden__3b95d)::after {
     content: "";
     position: absolute;
-    bottom: 50%;
+    top: 50%;
     left: 0;
     width: 16px;
     height: 8px;
     background-color: var(--Unread);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    transform: translateY(50%) rotate(-90deg);
+    transform: translateY(-50%) rotate(-90deg);
 }
 
 .visual-refresh .folderPreviewWrapper__48112 {
@@ -327,5 +332,16 @@
 }
 
 .folderGroup__48112.isExpanded__48112 .folderPreviewWrapper__48112 {
-    margin-left: 6px; /* margin-top zu margin-left für horizontal */
+    margin-left: 6px;
+}
+
+/* Server-Icons in der Titelleiste verkleinern für bessere Passform */
+:root {
+    --ServerSize: 32px; /* Kleiner für Titelleiste */
+    --Rounding: 8px;
+}
+
+/* Scrollbar in der Titelleiste ausblenden */
+#app-mount .guilds__5e434::-webkit-scrollbar {
+    display: none;
 }
